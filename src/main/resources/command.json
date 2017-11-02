@@ -1,0 +1,56 @@
+{
+  "error101":{
+    "ctl":"<ctl td='error' errs='101'/>"
+  },
+  "error104":{
+    "ctl":"<ctl td='error' errs='104'/>"
+  },
+  "error103":{
+    "ctl":"<ctl td='error' errs='103'/>"
+  },
+  "error109":{
+    "ctl":"<ctl td='error' errs='109'/>"
+  },
+  "error108":{
+    "ctl":"<ctl td='error' errs='108'/>"
+  },
+  "error110":{
+    "ctl":"<ctl td='error' errs='110'/>"
+  },
+  "error102":{
+    "ctl":"<ctl td='error' errs='102'/>"
+  },
+  "sideBrush5":{
+    "ctl":"<ctl td='LifeSpan' type='SideBrush' left='5' total='150'/>"
+  },
+  "filter5":{
+  "ctl":"<ctl td='LifeSpan' type='DustCaseHeap' left='5' total='150'/>"
+  },
+  "brush5":{
+    "ctl":"<ctl td='LifeSpan' type='Brush' left='5' total='150'/>"
+  },
+  "sideBrush0":{
+    "ctl":"<ctl td='LifeSpan' type='SideBrush' left='0' total='150'/>"
+  },
+  "filter0":{
+    "ctl":"<ctl td='LifeSpan' type='DustCaseHeap' left='0' total='150'/>"
+  },
+  "brush0":{
+    "ctl":"<ctl td='LifeSpan' type='Brush' left='0' total='150'/>"
+  },
+  "sideBrush100":{
+    "ctl":"<ctl td='LifeSpan' type='SideBrush' left='100' total='150'/>"
+  },
+  "filter100":{
+    "ctl":"<ctl td='LifeSpan' type='DustCaseHeap' left='100' total='150'/>"
+  },
+  "brush100":{
+    "ctl":"<ctl td='LifeSpan' type='Brush' left='100' total='150'/>"
+  },
+  "lowBattery10":{
+    "ctl":"<ctl td='BatteryInfo'><battery power='10'/></ctl>"
+  },
+  "goCharge":{
+    "ctl":"<ctl td='ChargeState'><charge type='going' h='' r='r'/></ctl>"
+  }
+}

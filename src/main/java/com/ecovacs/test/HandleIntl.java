@@ -234,9 +234,9 @@ class HandleIntl {
 
     void changeLanguage(String strLanguage){
         //return deebot clean
-        //SettingActivity.getInstance().clickBack();
+        SettingActivity.getInstance().clickBack();
         //return com.ecovacs.test.main
-        //nibotCleanActivity.getInstance().clickBack();
+        UnibotCleanActivity.getInstance().clickBack();
         /*if(!login("Japan", PropertyData.getProperty("hotmail_email"), PropertyData.getProperty("login_pass"))){
             logger.error("login failed!!!");
             return;
@@ -248,9 +248,9 @@ class HandleIntl {
         //return com.ecovacs.test.main
         MoreActivity.getInstance().clickBack();
         MainActivity.getInstance().showDeviceList();
-        /*if(!logout()){
+        if(!logout()){
             logger.info("logout failed!!!");
-        }*/
+        }
     }
 
     void translateErrorReport_init(){
@@ -316,7 +316,7 @@ class HandleIntl {
     }
 
     boolean translateMain(){
-        //login("Japan", PropertyData.getProperty("hotmail_email"), PropertyData.getProperty("login_pass"));
+        login("Japan", PropertyData.getProperty("hotmail_email"), PropertyData.getProperty("login_pass"));
         //
         MainActivity.getInstance().showDeviceList();
         //
@@ -496,7 +496,7 @@ class HandleIntl {
 
     boolean translateUnibotSetting(){
         //will delete
-        MainActivity.getInstance().clickDevice("SLIM2");
+        //MainActivity.getInstance().clickDevice("SLIM2");
         //
         UnibotCleanActivity.getInstance().showActivity();
         UnibotCleanActivity.getInstance().clickSetting();
@@ -713,7 +713,7 @@ class HandleIntl {
         //
         //SettingActivity.getInstance().clickTimeSchedule();
         //
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < 10; i++){
             System.out.println("i = " + i);
             int iDate = i;
             if(i >= 7){

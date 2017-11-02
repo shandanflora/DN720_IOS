@@ -24,7 +24,7 @@ public class TestIntlTranslate_Taiwan {
         }
         HandleIntl.getInstance().init(driver);
         HandleIntl.getInstance().translate_init("TW", "TW");
-        //HandleIntl.getInstance().translateErrorReport_init();
+        HandleIntl.getInstance().translateErrorReport_init();
     }
 
     @AfterClass

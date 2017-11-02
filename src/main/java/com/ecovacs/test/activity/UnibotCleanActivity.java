@@ -44,7 +44,7 @@ public class UnibotCleanActivity {
     private MobileElement btnEdge = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[7]")
     private MobileElement btnSpot = null;
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIAScrollView[1]")
+    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]")
     private MobileElement promptContent = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")
     private MobileElement promptCancel = null;
@@ -343,11 +343,18 @@ public class UnibotCleanActivity {
                     tranMap.get(strKey), "fail");
         }
         boolean bSure = surePrompt.getText().trim().equalsIgnoreCase
-                (tranMap.get("random_deebot_confirm").trim());
+                (tranMap.get("random_deebot_btn_ignore").trim());
         if (!bSure){
             TranslateErrorReport.getInstance().insetNewLine(
                     strLanguage, strPage, surePrompt.getText(),
-                    tranMap.get("random_deebot_confirm"), "fail");
+                    tranMap.get("random_deebot_btn_ignore"), "fail");
+        }
+        boolean bView = viewPrompt.getText().trim().equalsIgnoreCase
+                (tranMap.get("random_deebot_btn_check").trim());
+        if (!bView){
+            TranslateErrorReport.getInstance().insetNewLine(
+                    strLanguage, strPage, viewPrompt.getText(),
+                    tranMap.get("random_deebot_btn_check"), "fail");
         }
         surePrompt.click();
         if (bSupspend){
@@ -378,11 +385,19 @@ public class UnibotCleanActivity {
 
     //check warn tip
     private boolean translateWarnTip(Map<String, String> tranMap, String strKey){
-        boolean bWarnTip = textViewWarnTip.getText().trim().equalsIgnoreCase
+        String strWarn;
+        if (-1 == textViewWarnTip.getText().lastIndexOf(">")){
+            //not find
+            strWarn = textViewWarnTip.getText();
+        }else {
+            strWarn = textViewWarnTip.getText().replace(">", " ").trim();
+        }
+        System.out.println(strWarn);
+        boolean bWarnTip = strWarn.trim().equalsIgnoreCase
                 (tranMap.get(strKey).trim());
         if (!bWarnTip){
             TranslateErrorReport.getInstance().insetNewLine(
-                    tranMap.get("language"), "Malfunction", textViewWarnTip.getText(),
+                    tranMap.get("language"), "Malfunction", strWarn,
                     tranMap.get(strKey), "fail");
         }
         return bWarnTip;
@@ -404,7 +419,7 @@ public class UnibotCleanActivity {
         boolean bTip = translateWarnTip(tranMap, "random_deebot_wheel_malfunction");
         return bPrompt && bState && bTip;
     }
-/*
+
     public boolean mainBrushMalfunction(Map<String, String> tranMap){
         logger.info("----mainBrushMalfunction----");
         boolean bPrompt = translateMalPrompt(tranMap, "random_deebot_mainbrush_malfunction",
@@ -412,7 +427,7 @@ public class UnibotCleanActivity {
         boolean bState = translateMalState(tranMap, "random_deebot_state_error");
         boolean bTip = translateWarnTip(tranMap, "random_deebot_mainbrush_malfunction");
         return bPrompt && bState && bTip;
-    }*/
+    }
 
     public boolean sideBrushMalfunction(Map<String, String> tranMap){
         logger.info("----sideBrushMalfunction----");
@@ -523,6 +538,12 @@ public class UnibotCleanActivity {
         return bPrompt && bTip;
     }
 
+    public boolean brushWillExpire(Map<String, String> tranMap){
+        boolean bPrompt = consumablePrompt(tranMap, "random_deebot_mainbrush_low_hint1");
+        boolean bTip = translateSumWarnTip(tranMap);
+        return bPrompt && bTip;
+    }
+
     public boolean filterExpired(Map<String, String> tranMap){
         boolean bPrompt = consumablePrompt(tranMap, "random_deebot_filter_due_hint1");
         boolean bTip = translateSumWarnTip(tranMap);
@@ -531,6 +552,12 @@ public class UnibotCleanActivity {
 
     public boolean sideBrushExpired(Map<String, String> tranMap){
         boolean bPrompt = consumablePrompt(tranMap, "random_deebot_sidebrush_due_hint1");
+        boolean bTip = translateSumWarnTip(tranMap);
+        return bPrompt && bTip;
+    }
+
+    public boolean brushExpired(Map<String, String> tranMap){
+        boolean bPrompt = consumablePrompt(tranMap, "random_deebot_mainbrush_due_hint1");
         boolean bTip = translateSumWarnTip(tranMap);
         return bPrompt && bTip;
     }

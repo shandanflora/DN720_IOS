@@ -149,7 +149,7 @@ public class NewScheduleActivity {
         }
         RepetitionActivity.getInstance().clickWeekOfDate(Common.getInstance().getWeekIndex());
         RepetitionActivity.getInstance().clickBack();
-        boolean brepeatValue= repeatValue.getText().equalsIgnoreCase(tranMap.get("random_deebot_everyday"));
+        boolean brepeatValue = repeatValue.getText().equalsIgnoreCase(tranMap.get("random_deebot_everyday"));
         if (!brepeatValue){
             TranslateErrorReport.getInstance().insetNewLine(
                     tranMap.get("language"), "NewSchedule", repeatValue.getText(),

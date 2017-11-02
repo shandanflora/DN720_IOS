@@ -38,6 +38,8 @@ public class TimeScheduleActivity {
     private MobileElement listView = null;
     //over time schedule
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]")
+                    //UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]
+
     private MobileElement overPromptContent = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")
     private MobileElement overPromptSure = null;
@@ -110,11 +112,12 @@ public class TimeScheduleActivity {
         String strLanguage = tranMap.get("language");
         Common.getInstance().showActivity(textDate);
         String strDate = textDate.getText().trim();
-        boolean btextDate = strDate.equalsIgnoreCase(tranMap.get(weekDays[iIndex]));
+        String strMap = "AUTO" + tranMap.get("random_deebot_state_clean") + ("  ") + tranMap.get(weekDays[iIndex]).trim();
+        boolean btextDate = strDate.equalsIgnoreCase(strMap);
         if (!btextDate){
             TranslateErrorReport.getInstance().insetNewLine(
                     strLanguage, "TimeSchedule", strDate,
-                    tranMap.get(weekDays[iIndex]), "fail");
+                    strMap, "fail");
         }
         return btextDate;
     }

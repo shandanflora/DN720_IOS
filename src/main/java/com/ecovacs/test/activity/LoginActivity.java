@@ -162,7 +162,7 @@ public class LoginActivity {
 
     private boolean invalidEmail(Map<String, String> tranMap){
         editEmail.sendKeys("ecovacs@hotmail");
-        line3Email_Pass.click();
+
         boolean btextViewMessage = textViewMessage.getText().equalsIgnoreCase(tranMap.get("Email"));
         if(!btextViewMessage){
             TranslateErrorReport.getInstance().insetNewLine(
